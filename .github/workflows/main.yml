@@ -10,7 +10,7 @@ jobs:
       - name: 压缩文件夹 
         run: |
           cd ./public
-          zip -q -r dist.zip ./
+          zip -q -r ../dist.zip ./
           cd ../
           ls
       - name: 同步文件到服务器
