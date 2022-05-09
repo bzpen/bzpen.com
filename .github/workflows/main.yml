@@ -15,7 +15,7 @@ jobs:
           host: ${{secrets.HOST}}
           username: ${{secrets.USER}}
           password: ${{secrets.PASSWORD}}
-          local: "./zip.zip"
+          local: "./dist.zip"
           remote: ${{secrets.SERVER_PATH}}
       - name: 解压文件
         uses: appleboy/ssh-action@master
