@@ -1,0 +1,19 @@
+
+@color: #5a09bc, #4955bc, #8083bc, #4fbc85;
+.bzpen{
+  width: 8rem;
+  margin: 40px auto;
+  position: relative;
+  .bzpenH1{
+    position: relative;
+  }
+  each(@color,{
+    .a-@{index}{
+      content: "";
+      position: absolute;
+      height: 2px;
+      background: @value;
+      z-index: 10;
+    }
+  })
+}
