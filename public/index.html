@@ -8,17 +8,23 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet/less" type="text/css" href="css/style.less" />
 </head>
-<body class="bg-black text-gray-50">
+<body class="text-gray-50 bg-black">
+  <canvas id="canvas"></canvas>
   <main>
-    <svg id="clip-paths" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g></g></svg>
-    <div>
-      <a href="">bzpen</a>
+    <!-- <svg id="clip-paths" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g></g></svg> -->
+    <div class="text-white">
+      <h1>bzpen</h1>
     </div>
+    
   </main>
+  <div id="treeJs" class="absolute top-0" style="z-index: -10;"></div>
+  
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js" ></script>
-  <script src="./js/mv.js"></script>
+  <script src="./js/canvas.js"></script>
+  <!-- <script src="./js/mv.js"></script>
   <script src="./js/dynamics.js"></script>
-  <script src="./js/tinycolor.js"></script>
+  <script src="./js/tinycolor.js"></script> -->
+
 </body>
 
 </html>
