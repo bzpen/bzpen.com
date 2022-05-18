@@ -155,16 +155,23 @@ setInterval(() => {
         getRadian(line1);
         drawCircle(line1)
       }else{
-        // if(line1.arcZ > 0) {
-        //   line1.arcZ = line1.arcZ - line1.speed;
-        //   line1.z = line1.z + line1.speed;
-        //   line1.radian = line1.radian + 1/line1.radius;
-        //   getRadian(line1);
-        //   drawCircle(line1)
-        // }else{
-        //   line1.x += line1.speed;
-        //   getRadian(line1);
-        // }
+        line1 = {
+          x: 0,
+          y: window.innerHeight / 2 - 100,
+          z: 200,
+          speed: 4,
+        
+          // 弧起点坐标
+          startX: window.innerWidth / 2,
+          startY: window.innerHeight / 2 - 100, 
+          radian: 1.5 * Math.PI,
+          radius: 100,
+          arcZ: 0,
+          
+          // 圆心
+          centerX: window.innerWidth / 2,
+          centerY: window.innerHeight / 2,
+        }
       }
     }
   }
