@@ -28,7 +28,6 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /bzp
-            unzip dist.zip -d www
-            rm dist.zip
+            unzip ${{secrets.SERVER_PATH}} -d /bzp/www
+            rm ${{secrets.SERVER_PATH}}
             

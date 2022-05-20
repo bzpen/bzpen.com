@@ -151,7 +151,7 @@ setInterval(() => {
       drawCircle(line1)
     }else{
       if(line1.radian <= 3.5 * Math.PI - getArcZ(line1)) {
-        line1.radian = line1.radian + 4/line1.radius;
+        line1.radian = line1.radian + line1.speed/line1.radius;
         getRadian(line1);
         drawCircle(line1)
       }else{
@@ -180,7 +180,7 @@ setInterval(() => {
         }else{
           line1.arcZ = line1.arcZ - line1.speed;
           line1.z = line1.z + line1.speed;
-          line1.radian = line1.radian + 4/line1.radius;
+          line1.radian = line1.radian + line1.speed/line1.radius;
           getRadian(line1);
           drawLine(line1)
           drawCircle(line1)
