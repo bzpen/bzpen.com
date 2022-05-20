@@ -24,15 +24,15 @@ function resiceCanvas() {
 // 参数定义
 var line1 = {
   x: 0,
-  y: window.innerHeight / 2 - 100,
+  y: window.innerHeight / 2 - 50,
   z: 200,
-  speed: 4,
+  speed: 10,
 
   // 弧起点坐标
   startX: window.innerWidth / 2,
-  startY: window.innerHeight / 2 - 100, 
+  startY: window.innerHeight / 2 - 50, 
   radian: 1.5 * Math.PI,
-  radius: 100,
+  radius: 50,
   arcZ: 0,
   
   // 圆心
@@ -48,7 +48,17 @@ function getArcZ(line) {
 // 绘制线条
 function drawLine(line) {
 	ctx.beginPath();
-  ctx.strokeStyle = '#fff';
+  
+  var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+  gradient.addColorStop("0", "magenta");
+  gradient.addColorStop("0.8" ,"blue");
+  gradient.addColorStop("1.0", "red");
+
+  // Fill with gradient
+  ctx.strokeStyle = gradient;
+
+  ctx.lineCap = "round";
+  ctx.lineWidth = 10;
 	ctx.moveTo(line.x, line.y);
 	ctx.lineTo( line.x + line.z , line.y);
 	ctx.stroke();
@@ -57,10 +67,12 @@ function drawLine(line) {
 
 function drawCircle(line) {
   ctx.beginPath();
-  ctx.strokeStyle = '#fff';
+  // ctx.strokeStyle = '#fff';
   ctx.moveTo(line.startX, line.startY);
   // ctx.moveTo(line.centerX, line.centerY);
-  console.log("line.radian: " + line.radian);
+  console.log("line.arcZ: " + line.arcZ);
+  console.log( "getArcZ(line) + line.radian: " + (getArcZ(line) + line.radian));
+  console.log("radian:"+ line.radian);
   ctx.arc(line.centerX , line.centerY , line.radius, line.radian, getArcZ(line) + line.radian, false);
   ctx.stroke();
 	ctx.closePath();
@@ -78,55 +90,43 @@ function getRadian(line){
   // 第一象限 
   if(0 < poor && poor < 0.5 * Math.PI){
     
-    console.log("poor: " + poor);
     x = line.radius * Math.sin(poor);
 
     y = line.radius -  Math.sqrt(line.radius * line.radius - x * x);
 
-    console.log('第一象限');
   }
   // 第二象限 
   if( 0.5 * Math.PI < poor && poor < 1 * Math.PI){
-    console.log("poor", poor);
     
     poor = -(poor - Math.PI);
     x = line.radius * Math.sin(poor);
 
     y = line.radius + Math.sqrt(line.radius * line.radius - x * x);
 
-    console.log('第二象限');
   }
   // 第三象限 
   if( 1 * Math.PI < poor && poor < 1.5 * Math.PI){
-    console.log("poor", poor);
     
     poor = poor - 1 * Math.PI;
     x =  - line.radius * Math.sin(poor);
 
     y = line.radius + Math.sqrt(line.radius * line.radius - x * x);
 
-    console.log('第三象限');
   }
   
   // 第四象限 
   if( 1.5 * Math.PI < poor && poor < 2 * Math.PI){
-    console.log("poor", poor);
     
     poor = -( poor - 2 * Math.PI);
     x =  - line.radius * Math.sin(poor);
 
     y = line.radius -  Math.sqrt(line.radius * line.radius - x * x);
 
-    console.log('第四象限');
   }
 
   // let x = line.radius * poor;
 
   // let y = Math.sqrt(line.radius * line.radius - x * x);
-
-  console.log("x: " + x);
-  console.log("y: " + y);
-
   line.startX = line.x + x;
   line.startY = line.y + y;
   // line.radius = poor
@@ -143,10 +143,10 @@ setInterval(() => {
   
   
   if(line1.x + line1.z  >= window.innerWidth/2) {
-    if( line1.arcZ < 100) {
+    if( line1.arcZ < 200 && line1.x <= window.innerWidth/2) {
       line1.x += line1.speed;
       line1.z = line1.z - line1.speed;
-      line1.arcZ = 100 - line1.z;
+      line1.arcZ = 200 - line1.z;
       drawLine(line1)
       drawCircle(line1)
     }else{
@@ -155,23 +155,37 @@ setInterval(() => {
         getRadian(line1);
         drawCircle(line1)
       }else{
-        line1 = {
-          x: 0,
-          y: window.innerHeight / 2 - 100,
-          z: 200,
-          speed: 4,
-        
-          // 弧起点坐标
-          startX: window.innerWidth / 2,
-          startY: window.innerHeight / 2 - 100, 
-          radian: 1.5 * Math.PI,
-          radius: 100,
-          arcZ: 0,
-          
-          // 圆心
-          centerX: window.innerWidth / 2,
-          centerY: window.innerHeight / 2,
+        if(line1.radian > 3.5 * Math.PI){
+          line1.x += line1.speed;
+          drawLine(line1)
+          if(line1.x > window.innerWidth) {
+            line1 = {
+              x: 0,
+              y: window.innerHeight / 2 - 50,
+              z: 200,
+              speed: 10,
+            
+              // 弧起点坐标
+              startX: window.innerWidth / 2,
+              startY: window.innerHeight / 2 - 50, 
+              radian: 1.5 * Math.PI,
+              radius: 50,
+              arcZ: 0,
+              
+              // 圆心
+              centerX: window.innerWidth / 2,
+              centerY: window.innerHeight / 2,
+            }
+          }
+        }else{
+          line1.arcZ = line1.arcZ - line1.speed;
+          line1.z = line1.z + line1.speed;
+          line1.radian = line1.radian + 4/line1.radius;
+          getRadian(line1);
+          drawLine(line1)
+          drawCircle(line1)
         }
+        
       }
     }
   }
