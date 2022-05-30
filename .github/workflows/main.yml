@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: 压缩文件夹 
         run: |
-          cd ./public
+          cd ./dist
           zip -q -r ../dist.zip ./
           cd ../
           ls
