@@ -9,6 +9,7 @@
     "watch": "webpack --watch"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
@@ -25,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/3118659412/bzpen.com/issues"
   },
-  "homepage": "https://github.com/3118659412/bzpen.com#readme"
+  "homepage": "https://github.com/3118659412/bzpen.com#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
