@@ -13,17 +13,17 @@ module.exports = {
       import: './src/index.js',
       dependOn: 'shared',
     },
-    another: {
-      import: './src/another-module.js',
-      dependOn: 'shared',
-    },
+    // another: {
+    //   import: './src/another-module.js',
+    //   dependOn: 'shared',
+    // },
     shared: 'lodash',
   },
   // 错误跟踪
   devtool: 'inline-source-map',
   // 输出文件
   output: {
-    filename: '[name].[contenthash].js',
+    filename: './static/js/[name]-[contenthash].js',
     // path.resolve() 解析路劲为绝对路径
     path: path.resolve(__dirname,'dist'),
     clean: true
@@ -38,6 +38,9 @@ module.exports = {
         // 处理图片资源
         test: /\.(png|jpg|gif|svg|jpeg)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: './static/img/[name]-[hash].[ext]',
+        }
       },
       {
 
