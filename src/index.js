@@ -3,7 +3,7 @@ import back from './assets/back.jpg';
 import _ from 'lodash';
 import log from './another-module';
 import './style/style.css';
-import "tailwindcss/tailwind.css"
+// import "tailwindcss/tailwind.css"
 
 function component(){
   const element = document.createElement('div');

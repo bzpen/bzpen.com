@@ -4,30 +4,27 @@ on:
     branches: [ main ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # 操作系统选择
+    runs-on:  ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.13.2]
+
     steps:
-      - uses: actions/checkout@v2
-      - name: 压缩文件夹 
-        run: |
-          cd ./dist
-          zip -q -r ../dist.zip ./
-          cd ../
-          ls
-      - name: 同步文件到服务器
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USER}}
-          password: ${{secrets.PASSWORD}}
-          local: "dist.zip"
-          remote: ${{secrets.SERVER_PATH}}
-      - name: 解压文件
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            unzip ${{secrets.SERVER_PATH}} -d /bzp/www
-            rm ${{secrets.SERVER_PATH}}
-            
+    - uses: actions/checkout@v2
+    - name: Node.js ${{ matrix.node-version }} 运行测试
+      uses: actions/setup-node@v2
+      with: 
+        node-version: ${{ matrix.node-version }}
+    - name: npm 依赖安装
+      run: npm install
+    - name: 打包
+      run: npm build
+    - name: 同步文件到服务器
+      uses: garygrossgarten/github-action-scp@release
+      with: 
+        host: ${{secrets.HOST}}   
+        username: ${{secrets.USER}}
+        password: ${{secrets.PASSWORD}}
+        local: "dist"
+        remote: ${{ secrets.DEV_SERVER_PATH }}
