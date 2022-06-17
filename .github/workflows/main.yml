@@ -27,4 +27,4 @@ jobs:
         username: ${{secrets.USER}}
         password: ${{secrets.PASSWORD}}
         local: "dist"
-        remote: ${{ secrets.DEV_SERVER_PATH }}
+        remote: ${{ secrets.SERVER_PATH }}
