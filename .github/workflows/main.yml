@@ -19,7 +19,7 @@ jobs:
     - name: npm 依赖安装
       run: npm install
     - name: 打包
-      run: npm build
+      run: npm run build
     - name: 同步文件到服务器
       uses: garygrossgarten/github-action-scp@release
       with: 
