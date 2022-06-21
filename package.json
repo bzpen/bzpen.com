@@ -35,8 +35,5 @@
   "bugs": {
     "url": "https://github.com/3118659412/bzpen.com/issues"
   },
-  "homepage": "https://github.com/3118659412/bzpen.com#readme",
-  "dependencies": {
-    "postcss-loader": "^7.0.0"
-  }
+  "homepage": "https://github.com/3118659412/bzpen.com#readme"
 }
