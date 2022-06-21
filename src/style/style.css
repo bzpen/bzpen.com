@@ -2,15 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@font-face {
-  font-family: "FZKTJW";
-  src: url("../assets/FZKTJW.TTF")
-}
-
-.font-FZKTJW {
-  font-family: "FZKTJW";
-}
-
 .mouse-hover{
   cursor: pointer;
 }
