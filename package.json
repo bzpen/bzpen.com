@@ -14,6 +14,7 @@
     "@types/lodash": "^4.14.182",
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.14",
@@ -36,7 +37,6 @@
   },
   "homepage": "https://github.com/3118659412/bzpen.com#readme",
   "dependencies": {
-    "copy-webpack-plugin": "^11.0.0",
-    "lodash": "^4.17.21"
+    "postcss-loader": "^7.0.0"
   }
 }
