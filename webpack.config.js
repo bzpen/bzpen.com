@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   mode: 'development',
   // 入口文件
@@ -60,13 +62,19 @@ module.exports = {
   },
   // webpack-dev-server 配置
   devServer:{
-    static: './dist'
+    static: './dist', 
+    hot: true, // 热重载
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'bzpen',
       template: './index.html',
     }),
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: "./public", to: "./public/" 
+      }]
+    })
   ],
   optimization:{
     runtimeChunk: 'single',
@@ -74,5 +82,4 @@ module.exports = {
       chunks: 'all',
     }
   }
-
 }

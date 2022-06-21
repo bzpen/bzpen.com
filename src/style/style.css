@@ -1,6 +1,16 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-.hello{
-  color : red;
+
+@font-face {
+  font-family: "FZKTJW";
+  src: url("/public/FZKTJW.ttf")
+}
+
+.font-FZKTJW {
+  font-family: "FZKTJW";
+}
+
+.mouse-hover{
+  cursor: pointer;
 }

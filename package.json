@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/3118659412/bzpen.com#readme",
   "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "lodash": "^4.17.21"
   }
 }

@@ -14,6 +14,7 @@ function createSvgChildEl(template) {
 }
 
 
+import dynamics from './dynamics.js';
 
 var totalMaskIdx = 0;
 function createMasksWithStripes(count, box) {
@@ -82,7 +83,7 @@ function cloneAndStripeElement(element, clipPathName, parent) {
     height: Math.ceil(box.height),
     display: 'none',
     pointerEvents: 'none',
-    background: '#101214',
+    // background: '#101214',
     fontSize: style.fontSize,
     fontFamily: style.fontFamily,
     color: style.color,
@@ -97,7 +98,7 @@ function cloneAndStripeElement(element, clipPathName, parent) {
 
 function handleMouseOver(e) {
   var el = e.target;
-  while (el && el.tagName.toLowerCase() !== 'a') {
+  while (el && !el.classList.contains("mouse-hover")) {
     el = el.parentNode;
   }
   if (!el) {
@@ -123,11 +124,16 @@ function animateLink(el) {
 
     for (var i = 0; i < masks.length; i++) {
       var clonedEl = cloneAndStripeElement(el, masks[i], document.body);
+
       var childrenEls = Array.prototype.slice.apply(clonedEl.querySelectorAll('path'));
       childrenEls.push(clonedEl);
       for (var k = 0; k < childrenEls.length; k++) {
-        var _color3 = tinycolor('hsl(' + Math.round(Math.random() * 360) + ', 80%, 65%)');
-        var rgb = _color3.toRgbString();
+
+        // var _color3 = tinycolor('hsl(' + Math.round(Math.random() * 360) + ', 80%, 65%)');
+       
+        // var rgb = _color3.toRgbString();
+        var rgb =  "rgb("  + Math.round(Math.random() * 360) + ", " + Math.round(Math.random() * 360) + ", " + Math.round(Math.random() * 360) + ")";
+
         dynamics.css(childrenEls[k], {
           color: rgb,
           fill: rgb
@@ -184,7 +190,8 @@ function animateLink(el) {
   };
 };
 
-var linkEls = document.querySelectorAll('a');
+// var linkEls = document.querySelectorAll('a');
+var linkEls = document.getElementsByClassName('mouse-hover');
 if (!('ontouchstart' in window)) {
   for (var i = 0; i < linkEls.length; i++) {
     linkEls[i].addEventListener('mouseover', handleMouseOver);
