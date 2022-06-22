@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/3118659412/bzpen.com/issues"
   },
-  "homepage": "https://github.com/3118659412/bzpen.com#readme"
+  "homepage": "https://github.com/3118659412/bzpen.com#readme",
+  "dependencies": {
+    "fontmin": "^0.9.9"
+  }
 }
