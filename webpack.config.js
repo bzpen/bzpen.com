@@ -76,10 +76,10 @@ module.exports = {
       }]
     })
   ],
-  optimization:{
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all',
-    }
-  }
+  // optimization:{
+  //   runtimeChunk: 'single',
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   }
+  // }
 }
